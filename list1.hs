@@ -31,3 +31,20 @@ flatten :: NestedList a -> [a]
 flatten (Elem x) = [x]
 flatten (List []) = []
 flatten (List (x : xs)) = flatten x ++ flatten (List xs)
+
+-- Problem 8
+compress :: Eq a => [a] -> [a]
+compress [x] = [x]
+compress (x : y : zs)
+	| x == y = compress (y : zs)
+	| otherwise = x : compress (y : zs)
+
+-- Problem 9
+pack :: Eq a => [a] -> [[a]]
+pack [] = []
+pack [x] = [[x]]
+pack (x : xs) = (x : takeWhile (\y -> x == y) xs) : pack (dropWhile (\y -> x == y) xs)
+
+-- Problem 10
+encode :: Eq a => [a] -> [(Int, a)]
+encode = map (\ys -> (myLength ys, head ys)) . pack
