@@ -1,3 +1,5 @@
+module List1 where
+
 -- Problem 1
 myLast :: [a] -> a
 myLast [] = error "Empty list"
@@ -36,8 +38,8 @@ flatten (List (x : xs)) = flatten x ++ flatten (List xs)
 compress :: Eq a => [a] -> [a]
 compress [x] = [x]
 compress (x : y : zs)
-	| x == y = compress (y : zs)
-	| otherwise = x : compress (y : zs)
+  | x == y = compress (y : zs)
+  | otherwise = x : compress (y : zs)
 
 -- Problem 9
 pack :: Eq a => [a] -> [[a]]
