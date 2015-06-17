@@ -60,3 +60,10 @@ rotate :: [a] -> Int -> [a]
 rotate xs n
   | n < 0 = (drop (length xs + n) xs) ++ (take (length xs + n) xs)
   | otherwise = (drop n xs) ++ (take n xs)
+
+-- Problem 20
+removeAt :: Int -> [a] -> (a, [a])
+removeAt n xs
+  | n < 1 = error "Index must be >= 1"
+  | n > length xs = error "Index not within list"
+  | otherwise = (xs !! (n - 1), take (n - 1) xs ++ drop n xs)
