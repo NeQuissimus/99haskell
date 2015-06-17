@@ -46,3 +46,11 @@ split :: [a] -> Int -> ([a], [a])
 split xs n
   | n <= length xs = (take n xs, drop n xs)
   | otherwise = error "List not long enough!"
+
+-- Problem 18
+slice :: [a] -> Int -> Int -> [a]
+slice xs start stop
+  | start >= stop = error "Start index needs to be >= stop index"
+  | stop > length xs = error "Stop index needs to be <= length of list"
+  | start < 1 = error "Start index needs to be at least 1"
+  | otherwise = take (stop - start + 1) $ drop (start - 1) xs
