@@ -36,3 +36,7 @@ dupli xs = xs >>= (\x -> [x, x])
 -- Problem 15
 repli :: [a] -> Int -> [a]
 repli xs = \n -> xs >>= (\x -> take n (repeat x))
+
+-- Problem 16
+dropEvery :: [a] -> Int -> [a]
+dropEvery xs = \n -> map fst $ filter (\(_, c) -> c `mod` n /= 0) $ zip xs [1..]
