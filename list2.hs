@@ -19,5 +19,13 @@ decodeModified (Single x : xs) = x : decodeModified xs
 decodeModified (Multiple (n, x) : xs) = take n (repeat x) ++ decodeModified xs
 
 -- Problem 13
---encodeDirect :: Eq a => [a] -> [Wrapper a]
+encodeDirect :: Eq a => [a] -> [Wrapper a]
+encodeDirect = map wrap . foldr countElems []
+  where
+    wrap (1, x) = Single x
+    wrap (n, x) = Multiple (n, x)
+    countElems x [] = [(1, x)]
+    countElems x (t@(n, y) : zs)
+      | x == y = (n + 1, x) : zs
+      | otherwise = (1, x) : t : zs
 
