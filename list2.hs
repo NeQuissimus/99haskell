@@ -40,3 +40,9 @@ repli xs = \n -> xs >>= (\x -> take n (repeat x))
 -- Problem 16
 dropEvery :: [a] -> Int -> [a]
 dropEvery xs = \n -> map fst $ filter (\(_, c) -> c `mod` n /= 0) $ zip xs [1..]
+
+-- Problem 17
+split :: [a] -> Int -> ([a], [a])
+split xs n
+  | n <= length xs = (take n xs, drop n xs)
+  | otherwise = error "List not long enough!"
