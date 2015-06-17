@@ -54,3 +54,9 @@ slice xs start stop
   | stop > length xs = error "Stop index needs to be <= length of list"
   | start < 1 = error "Start index needs to be at least 1"
   | otherwise = take (stop - start + 1) $ drop (start - 1) xs
+
+-- Problem 19
+rotate :: [a] -> Int -> [a]
+rotate xs n
+  | n < 0 = (drop (length xs + n) xs) ++ (take (length xs + n) xs)
+  | otherwise = (drop n xs) ++ (take n xs)
