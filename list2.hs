@@ -32,3 +32,7 @@ encodeDirect = map wrap . foldr countElems []
 -- Problem 14
 dupli :: [a] -> [a]
 dupli xs = xs >>= (\x -> [x, x])
+
+-- Problem 15
+repli :: [a] -> Int -> [a]
+repli xs = \n -> xs >>= (\x -> take n (repeat x))
