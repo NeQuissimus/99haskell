@@ -29,3 +29,6 @@ encodeDirect = map wrap . foldr countElems []
       | x == y = (n + 1, x) : zs
       | otherwise = (1, x) : t : zs
 
+-- Problem 14
+dupli :: [a] -> [a]
+dupli xs = xs >>= (\x -> [x, x])
